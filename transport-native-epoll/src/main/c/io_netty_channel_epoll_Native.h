@@ -98,6 +98,7 @@ jint Java_io_netty_channel_epoll_Native_isBroadcast(JNIEnv *env, jclass clazz, j
 jint Java_io_netty_channel_epoll_Native_getTcpKeepIdle(JNIEnv *env, jclass clazz, jint fd);
 jint Java_io_netty_channel_epoll_Native_getTcpKeepIntvl(JNIEnv *env, jclass clazz, jint fd);
 jint Java_io_netty_channel_epoll_Native_getTcpKeepCnt(JNIEnv *env, jclass clazz, jint fd);
+jintArray Java_io_netty_channel_epoll_Native_tcpInfo0(JNIEnv *env, jclass clazz, jint fd);
 
 jstring Java_io_netty_channel_epoll_Native_kernelVersion(JNIEnv *env, jclass clazz);
 jint Java_io_netty_channel_epoll_Native_iovMax(JNIEnv *env, jclass clazz);
