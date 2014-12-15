@@ -61,15 +61,15 @@ import java.util.List;
  * Be aware that sub-classes of {@link ByteToMessageDecoder} <strong>MUST NOT</strong>
  * annotated with {@link @Sharable}.
  * <p>
- * Some methods such as {@link ByteBuf.readBytes(int)} will cause a memory leak if the returned buffer
- * is not released or added to the <tt>out</tt> {@link List}. Use derived buffers like {@link ByteBuf.readSlice(int)}
+ * Some methods such as {@link ByteBuf#readBytes(int)} will cause a memory leak if the returned buffer
+ * is not released or added to the <tt>out</tt> {@link List}. Use derived buffers like {@link ByteBuf#readSlice(int)}
  * to avoid leaking memory.
  */
 public abstract class ByteToMessageDecoder extends ChannelInboundHandlerAdapter {
 
     ByteBuf cumulation;
     private boolean singleDecode;
-    private boolean decodeWasNull;
+    private boolean decodeWasNull = true;
     private boolean first;
 
     protected ByteToMessageDecoder() {
@@ -176,7 +176,12 @@ public abstract class ByteToMessageDecoder extends ChannelInboundHandlerAdapter 
                     cumulation = null;
                 }
                 int size = out.size();
-                decodeWasNull = size == 0;
+                if (size > 0 && decodeWasNull) {
+                    // channelRead(...) may be called multiple times before channelReadComplete(...) so we need
+                    // ensure that if we decoded at least one message decodeWasNull is set so channelReadComplete(...)
+                    // handles it correctly.
+                    decodeWasNull = false;
+                }
 
                 for (int i = 0; i < size; i ++) {
                     ctx.fireChannelRead(out.get(i));
@@ -212,8 +217,10 @@ public abstract class ByteToMessageDecoder extends ChannelInboundHandlerAdapter 
             if (!ctx.channel().config().isAutoRead()) {
                 ctx.read();
             }
+        } else {
+            // Something was read, call fireChannelReadComplete()
+            ctx.fireChannelReadComplete();
         }
-        ctx.fireChannelReadComplete();
     }
 
     @Override
