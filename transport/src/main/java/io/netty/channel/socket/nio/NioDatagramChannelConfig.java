@@ -25,7 +25,7 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.nio.channels.DatagramChannel;
-import java.nio.channels.NetworkChannel;
+// Android compilation import java.nio.channels.NetworkChannel;
 import java.util.Enumeration;
 
 /**
@@ -77,7 +77,7 @@ class NioDatagramChannelConfig extends DefaultDatagramChannelConfig {
             } catch (Exception e) {
                 throw new Error("cannot locate the IP_MULTICAST_LOOP field", e);
             }
-
+/* Android compilation
             try {
                 getOption = NetworkChannel.class.getDeclaredMethod("getOption", socketOptionType);
             } catch (Exception e) {
@@ -89,6 +89,7 @@ class NioDatagramChannelConfig extends DefaultDatagramChannelConfig {
             } catch (Exception e) {
                 throw new Error("cannot locate the setOption() method", e);
             }
+*/
         }
         IP_MULTICAST_TTL = ipMulticastTtl;
         IP_MULTICAST_IF = ipMulticastIf;

@@ -23,7 +23,7 @@ import io.netty.channel.RecvByteBufAllocator;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
-import java.net.StandardSocketOptions;
+import java.net.SocketOptions;
 
 /**
  * A {@link ChannelConfig} for a {@link DatagramChannel}.
@@ -62,64 +62,64 @@ import java.net.StandardSocketOptions;
 public interface DatagramChannelConfig extends ChannelConfig {
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_SNDBUF} option.
+     * Gets the {@link SocketOptions#SO_SNDBUF} option.
      */
     int getSendBufferSize();
 
     /**
-     * Sets the {@link StandardSocketOptions#SO_SNDBUF} option.
+     * Sets the {@link SocketOptions#SO_SNDBUF} option.
      */
     DatagramChannelConfig setSendBufferSize(int sendBufferSize);
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_RCVBUF} option.
+     * Gets the {@link SocketOptions#SO_RCVBUF} option.
      */
     int getReceiveBufferSize();
 
     /**
-     * Sets the {@link StandardSocketOptions#SO_RCVBUF} option.
+     * Sets the {@link SocketOptions#SO_RCVBUF} option.
      */
     DatagramChannelConfig setReceiveBufferSize(int receiveBufferSize);
 
     /**
-     * Gets the {@link StandardSocketOptions#IP_TOS} option.
+     * Gets the {@link SocketOptions#IP_TOS} option.
      */
     int getTrafficClass();
 
     /**
-     * Sets the {@link StandardSocketOptions#IP_TOS} option.
+     * Sets the {@link SocketOptions#IP_TOS} option.
      */
     DatagramChannelConfig setTrafficClass(int trafficClass);
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_REUSEADDR} option.
+     * Gets the {@link SocketOptions#SO_REUSEADDR} option.
      */
     boolean isReuseAddress();
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_REUSEADDR} option.
+     * Gets the {@link SocketOptions#SO_REUSEADDR} option.
      */
     DatagramChannelConfig setReuseAddress(boolean reuseAddress);
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_BROADCAST} option.
+     * Gets the {@link SocketOptions#SO_BROADCAST} option.
      */
     boolean isBroadcast();
 
     /**
-     * Sets the {@link StandardSocketOptions#SO_BROADCAST} option.
+     * Sets the {@link SocketOptions#SO_BROADCAST} option.
      */
     DatagramChannelConfig setBroadcast(boolean broadcast);
 
     /**
-     * Gets the {@link StandardSocketOptions#IP_MULTICAST_LOOP} option.
+     * Gets the {@link SocketOptions#IP_MULTICAST_LOOP} option.
      *
      * @return {@code true} if and only if the loopback mode has been disabled
      */
     boolean isLoopbackModeDisabled();
 
     /**
-     * Sets the {@link StandardSocketOptions#IP_MULTICAST_LOOP} option.
+     * Sets the {@link SocketOptions#IP_MULTICAST_LOOP} option.
      *
      * @param loopbackModeDisabled
      *        {@code true} if and only if the loopback mode has been disabled
@@ -127,12 +127,12 @@ public interface DatagramChannelConfig extends ChannelConfig {
     DatagramChannelConfig setLoopbackModeDisabled(boolean loopbackModeDisabled);
 
     /**
-     * Gets the {@link StandardSocketOptions#IP_MULTICAST_TTL} option.
+     * Gets the {@link SocketOptions#IP_MULTICAST_TTL} option.
      */
     int getTimeToLive();
 
     /**
-     * Sets the {@link StandardSocketOptions#IP_MULTICAST_TTL} option.
+     * Sets the {@link SocketOptions#IP_MULTICAST_TTL} option.
      */
     DatagramChannelConfig setTimeToLive(int ttl);
 
@@ -147,12 +147,12 @@ public interface DatagramChannelConfig extends ChannelConfig {
     DatagramChannelConfig setInterface(InetAddress interfaceAddress);
 
     /**
-     * Gets the {@link StandardSocketOptions#IP_MULTICAST_IF} option.
+     * Gets the {@link SocketOptions#IP_MULTICAST_IF} option.
      */
     NetworkInterface getNetworkInterface();
 
     /**
-     * Sets the {@link StandardSocketOptions#IP_MULTICAST_IF} option.
+     * Sets the {@link SocketOptions#IP_MULTICAST_IF} option.
      */
     DatagramChannelConfig setNetworkInterface(NetworkInterface networkInterface);
 

@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+    compile ('io.netty:netty-common:4.1.0.Beta3') {
+        exclude group: 'io.netty', module: 'netty-buffer'
+        exclude group: 'io.netty', module: 'netty-transport'
+    }
+}
+
+android {
+    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion Math.max(15, Integer.parseInt(ANDROID_BUILD_MIN_SDK_VERSION))
+        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+        versionCode 400
+        versionName '4.1.0'
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java']
+        }
+
+        androidTest {
+            java.srcDirs = ['src/test/java']
+        }
+    }
+}

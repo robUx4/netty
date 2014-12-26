@@ -41,7 +41,7 @@ import java.net.SocketAddress;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
-import java.nio.channels.MembershipKey;
+// Android compilation import java.nio.channels.MembershipKey;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.spi.SelectorProvider;
 import java.util.ArrayList;
@@ -71,7 +71,7 @@ public final class NioDatagramChannel
 
     private final DatagramChannelConfig config;
 
-    private Map<InetAddress, List<MembershipKey>> memberships;
+    // Android compilation private Map<InetAddress, List<MembershipKey>> memberships;
 
     private static DatagramChannel newSocket(SelectorProvider provider) {
         try {
@@ -95,7 +95,7 @@ public final class NioDatagramChannel
         checkJavaVersion();
 
         try {
-            return provider.openDatagramChannel(ProtocolFamilyConverter.convert(ipFamily));
+            return provider.openDatagramChannel(/* Android compilationProtocolFamilyConverter.convert(ipFamily)*/);
         } catch (IOException e) {
             throw new ChannelException("Failed to open a socket.", e);
         }
@@ -400,6 +400,7 @@ public final class NioDatagramChannel
             throw new NullPointerException("networkInterface");
         }
 
+/* Android compilation
         try {
             MembershipKey key;
             if (source == null) {
@@ -426,6 +427,7 @@ public final class NioDatagramChannel
         } catch (Throwable e) {
             promise.setFailure(e);
         }
+*/
 
         return promise;
     }
@@ -478,6 +480,7 @@ public final class NioDatagramChannel
             throw new NullPointerException("networkInterface");
         }
 
+/* Android compilation
         synchronized (this) {
             if (memberships != null) {
                 List<MembershipKey> keys = memberships.get(multicastAddress);
@@ -500,6 +503,7 @@ public final class NioDatagramChannel
                 }
             }
         }
+*/
 
         promise.setSuccess();
         return promise;
@@ -534,6 +538,7 @@ public final class NioDatagramChannel
         if (networkInterface == null) {
             throw new NullPointerException("networkInterface");
         }
+/* Android compilation
         synchronized (this) {
             if (memberships != null) {
                 List<MembershipKey> keys = memberships.get(multicastAddress);
@@ -548,6 +553,7 @@ public final class NioDatagramChannel
                 }
             }
         }
+*/
         promise.setSuccess();
         return promise;
     }

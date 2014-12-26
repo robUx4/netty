@@ -21,7 +21,7 @@ import io.netty.channel.MessageSizeEstimator;
 import io.netty.channel.RecvByteBufAllocator;
 
 import java.net.ServerSocket;
-import java.net.StandardSocketOptions;
+import java.net.SocketOptions;
 
 /**
  * A {@link ChannelConfig} for a {@link ServerSocketChannel}.
@@ -59,22 +59,22 @@ public interface ServerSocketChannelConfig extends ChannelConfig {
     ServerSocketChannelConfig setBacklog(int backlog);
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_REUSEADDR} option.
+     * Gets the {@link SocketOptions#SO_REUSEADDR} option.
      */
     boolean isReuseAddress();
 
     /**
-     * Sets the {@link StandardSocketOptions#SO_REUSEADDR} option.
+     * Sets the {@link SocketOptions#SO_REUSEADDR} option.
      */
     ServerSocketChannelConfig setReuseAddress(boolean reuseAddress);
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_RCVBUF} option.
+     * Gets the {@link SocketOptions#SO_RCVBUF} option.
      */
     int getReceiveBufferSize();
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_SNDBUF} option.
+     * Gets the {@link SocketOptions#SO_SNDBUF} option.
      */
     ServerSocketChannelConfig setReceiveBufferSize(int receiveBufferSize);
 

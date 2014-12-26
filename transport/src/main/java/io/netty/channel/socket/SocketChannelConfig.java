@@ -24,7 +24,7 @@ import io.netty.channel.MessageSizeEstimator;
 import io.netty.channel.RecvByteBufAllocator;
 
 import java.net.Socket;
-import java.net.StandardSocketOptions;
+import java.net.SocketOptions;
 
 /**
  * A {@link ChannelConfig} for a {@link SocketChannel}.
@@ -59,7 +59,7 @@ import java.net.StandardSocketOptions;
 public interface SocketChannelConfig extends ChannelConfig {
 
     /**
-     * Gets the {@link StandardSocketOptions#TCP_NODELAY} option.  Please note that the default value of this option
+     * Gets the {@link SocketOptions#TCP_NODELAY} option.  Please note that the default value of this option
      * is {@code true} unlike the operating system default ({@code false}). However, for some buggy platforms, such as
      * Android, that shows erratic behavior with Nagle's algorithm disabled, the default value remains to be
      * {@code false}.
@@ -67,7 +67,7 @@ public interface SocketChannelConfig extends ChannelConfig {
     boolean isTcpNoDelay();
 
     /**
-     * Sets the {@link StandardSocketOptions#TCP_NODELAY} option.  Please note that the default value of this option
+     * Sets the {@link SocketOptions#TCP_NODELAY} option.  Please note that the default value of this option
      * is {@code true} unlike the operating system default ({@code false}). However, for some buggy platforms, such as
      * Android, that shows erratic behavior with Nagle's algorithm disabled, the default value remains to be
      * {@code false}.
@@ -75,62 +75,62 @@ public interface SocketChannelConfig extends ChannelConfig {
     SocketChannelConfig setTcpNoDelay(boolean tcpNoDelay);
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_LINGER} option.
+     * Gets the {@link SocketOptions#SO_LINGER} option.
      */
     int getSoLinger();
 
     /**
-     * Sets the {@link StandardSocketOptions#SO_LINGER} option.
+     * Sets the {@link SocketOptions#SO_LINGER} option.
      */
     SocketChannelConfig setSoLinger(int soLinger);
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_SNDBUF} option.
+     * Gets the {@link SocketOptions#SO_SNDBUF} option.
      */
     int getSendBufferSize();
 
     /**
-     * Sets the {@link StandardSocketOptions#SO_SNDBUF} option.
+     * Sets the {@link SocketOptions#SO_SNDBUF} option.
      */
     SocketChannelConfig setSendBufferSize(int sendBufferSize);
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_RCVBUF} option.
+     * Gets the {@link SocketOptions#SO_RCVBUF} option.
      */
     int getReceiveBufferSize();
 
     /**
-     * Sets the {@link StandardSocketOptions#SO_RCVBUF} option.
+     * Sets the {@link SocketOptions#SO_RCVBUF} option.
      */
     SocketChannelConfig setReceiveBufferSize(int receiveBufferSize);
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_KEEPALIVE} option.
+     * Gets the {@link SocketOptions#SO_KEEPALIVE} option.
      */
     boolean isKeepAlive();
 
     /**
-     * Sets the {@link StandardSocketOptions#SO_KEEPALIVE} option.
+     * Sets the {@link SocketOptions#SO_KEEPALIVE} option.
      */
     SocketChannelConfig setKeepAlive(boolean keepAlive);
 
     /**
-     * Gets the {@link StandardSocketOptions#IP_TOS} option.
+     * Gets the {@link SocketOptions#IP_TOS} option.
      */
     int getTrafficClass();
 
     /**
-     * Sets the {@link StandardSocketOptions#IP_TOS} option.
+     * Sets the {@link SocketOptions#IP_TOS} option.
      */
     SocketChannelConfig setTrafficClass(int trafficClass);
 
     /**
-     * Gets the {@link StandardSocketOptions#SO_REUSEADDR} option.
+     * Gets the {@link SocketOptions#SO_REUSEADDR} option.
      */
     boolean isReuseAddress();
 
     /**
-     * Sets the {@link StandardSocketOptions#SO_REUSEADDR} option.
+     * Sets the {@link SocketOptions#SO_REUSEADDR} option.
      */
     SocketChannelConfig setReuseAddress(boolean reuseAddress);
 
