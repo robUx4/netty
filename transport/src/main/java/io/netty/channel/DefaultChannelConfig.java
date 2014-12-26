@@ -16,6 +16,7 @@
 package io.netty.channel;
 
 import io.netty.buffer.ByteBufAllocator;
+import io.netty.buffer.ByteBufUtil;
 import io.netty.channel.nio.AbstractNioByteChannel;
 import io.netty.channel.socket.SocketChannelConfig;
 
@@ -37,7 +38,7 @@ public class DefaultChannelConfig implements ChannelConfig {
 
     protected final Channel channel;
 
-    private volatile ByteBufAllocator allocator = ByteBufAllocator.DEFAULT;
+    private volatile ByteBufAllocator allocator = ByteBufUtil.DEFAULT_ALLOCATOR;
     private volatile RecvByteBufAllocator rcvBufAllocator = DEFAULT_RCVBUF_ALLOCATOR;
     private volatile MessageSizeEstimator msgSizeEstimator = DEFAULT_MSG_SIZE_ESTIMATOR;
 

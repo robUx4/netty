@@ -42,7 +42,7 @@ public final class ByteBufUtil {
 
     private static final char[] HEXDUMP_TABLE = new char[256 * 4];
 
-    static final ByteBufAllocator DEFAULT_ALLOCATOR;
+    public static final ByteBufAllocator DEFAULT_ALLOCATOR;
 
     private static final int THREAD_LOCAL_BUFFER_SIZE;
 
